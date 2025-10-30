@@ -1,0 +1,33 @@
+clc
+x=input('enter the sequence=');
+h=input('enter the sequence=');
+n1=length(x);
+n2=length(h);
+t1=0:n1-1;
+t2=0:n2-1;
+subplot(2,2,1)
+stem(t1,x)
+xlabel('n')
+ylabel('amplitude')
+title('sequence x');
+subplot(2,2,2)
+stem(t2,h)
+xlabel('n');
+ylabel('amplitude');
+title('sequence h');
+n=max(n1,n2)
+x=[x,zeros(1,n-n1)]
+h=[h,zeros(1,n-n2)]
+y=zeros(1,n)
+for i=0:n-1
+    for j=0:n-1
+        k=mod((i-j),n)
+        y(i+1)=y(i+1)+x(j+1)*h(k+1)
+    end
+end
+subplot(2,2,3)
+z=0:n-1
+stem(z,y)
+xlabel('n');
+ylabel('amplitude');
+title('circular convolution of x & h');
