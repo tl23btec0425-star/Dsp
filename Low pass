@@ -1,0 +1,25 @@
+clear all
+close all
+N=50;
+wc=0.1;
+h=fir1(N,wc,"low");
+[H,w]=freqz(h,1,256);
+subplot(3,1,1)
+plot(w/pi,abs(H));
+title("Magnitude response of Low pass FIR Filter with cutoff frequency 0.1pi");
+xlabel("Frequency");
+ylabel("Gain");
+grid on;
+subplot(3,1,2)
+plot(w/pi,10*log10(abs(H)));
+title("Magnitude response of Low pass FIR Filter with cutoff frequency 0.1pi(in db)");
+xlabel("Frequency");
+ylabel("Gain(in db)");
+grid on;
+subplot(3,1,3)
+plot(w/pi,angle(H));
+title("Phase response of Low pass FIR Filter with cutoff frequency 0.1pi(in db)");
+xlabel("Frequency");
+ylabel("Phase");
+grid on;
+
